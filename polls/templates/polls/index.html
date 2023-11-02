@@ -1,0 +1,8 @@
+{% extends "polls/base.html" %}
+{% block content %}
+        {% for post in posts %}
+            <h1> {{post.title}}</h1>
+            <p> {{post.author}}</p>
+            <small> {{ post.content }} </small>
+        {% endfor  %}
+{% endblock content %}
