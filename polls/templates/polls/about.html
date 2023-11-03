@@ -1,4 +1,16 @@
 {% extends "polls/base.html" %}
 {% block content %}
         <h1> About Django  </h1>
+        {% for post in posts %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <h1> {{post.title}}</h1>
+                        <p> {{post.author}}</p>
+                        <small> {{ post.content }} </small>
+                    </div>
+                    <small class=""> {{ post.date_posted|date:"F d, Y" }} </small>
+                </div>
+            </article>
+        {% endfor  %}
 {% endblock content %}

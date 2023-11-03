@@ -20,18 +20,21 @@
             <ul class="menuList">
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="walimah.html">Walimah</a></li>
             </ul>
         </div>
         <div class="item">
-            <a class="logo" href="index.html"><img src="assets/img/logo.png" alt="Mawaddah Indonesia"
+            <a class="logo" href="{% url 'index' %}"><img src="assets/img/logo.png" alt="Mawaddah Indonesia"
                     class="img-fluid"></a>
         </div>
         <div class="item">
             <ul class="menuList">
-                <li><a href="gallery.html">Gallery</a></li>
-                <li class="active"><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -72,18 +75,13 @@
         </div>
 
         <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}"> {{ message }} </div> 
+                {% endfor %}
+            {% endif %}
             {% block content %}{% endblock %}
-            <p>Mawaddah indonesia adalah wadah untuk antum semua yang sedang ikhtiar mencari pasangan yang Shalih dengan
-                cara yang Allah ridhai. Kami memfasilitasi semua proses nya dari mulai upload CV antum sampai terjadinya
-                acara pernikahan, semua itu kami kawal dengan ketentuan (Syari’at) Rab kami Allah Subhanahu Wata’ala
-                yang maha Agung dan Maha Suci.</p>
-
-            <p>Kami sama sekali tidak memungut biaya dalam proses ta’aruf antum, kami hanya sebagai fasilitator yang
-                mudah-mudahan dapat membantu antum mendapatkan kebaikan dari niat antum yaitu pasangan yang Shalih.
-                Karena kami sudah cukup puas menjadi perantara antum untuk menyebarkan kebaikan di mukabumi Rab kami
-                yang Maha Benar dengan segala ke IndahanNya.</p>
-
-            <p><a href="contact.html" class="btn btn-primary btn-lg">Hubungi kami</a></p>
+            
         </div>
     </div>
     <!-- Event Organizer -->
