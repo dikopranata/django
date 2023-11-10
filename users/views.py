@@ -13,7 +13,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username} !')
-            return redirect('polls-index')
+            return redirect('index')
     else :
         #form = UserCreationForm()
         form = UserRegisterForm()
