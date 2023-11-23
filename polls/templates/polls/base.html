@@ -20,10 +20,11 @@
             <ul class="menuList">
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
+                
             </ul>
         </div>
         <div class="item">
-            <a class="logo" href="{% url 'index' %}"><img src="assets/img/logo.png" alt="Mawaddah Indonesia"
+            <a class="logo" href="{% url 'index' %}"><img src="{{user.profile.image.url}}" alt="Mawaddah Indonesia"
                     class="img-fluid"></a>
         </div>
         <div class="item">
@@ -80,8 +81,9 @@
                 <div class="alert alert-{{message.tags}}"> {{ message }} </div> 
                 {% endfor %}
             {% endif %}
-            {% block content %}{% endblock %}
             
+            {% block content %}
+            {% endblock %}
         </div>
     </div>
     <!-- Event Organizer -->

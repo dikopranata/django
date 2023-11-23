@@ -1,0 +1,56 @@
+{% extends "home.html" %}
+<!-- Navigation -->
+{% block content %}
+<div id="mainNavigation" class="navigationContainer">
+    <div class="item">
+        <ul class="menuList">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+        </ul>
+    </div>
+    <div class="item">
+        <a class="logo" href="{% url 'index' %}"><img src="assets/img/logo.png" alt="Mawaddah Indonesia"
+                class="img-fluid"></a>
+    </div>
+    <div class="item">
+        <ul class="menuList">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+
+<div class="bgMenuMobile"></div>
+<div id="navMobileTrigger" class="navMobileTrigger" onclick="openMenuMobile()"></div>
+<a href="index.html" id="logoMobile" class="logoMobile"><img src="assets/img/logo.png" alt="Mawaddah Indonesia"
+        class="img-fluid"></a>
+
+<!-- Navigation -->
+<!-- Sosmed fixed -->
+
+<ul id="sosmedFixed" class="sosmedFixed d-none1">
+    <li><a href="https://web.facebook.com/khalidzeedbasalamah?_rdc=1&_rdr" target="_blank"><img
+                src="assets/img/sosmed/facebook.svg" alt="Facebook" class="img-fluid"></a></li>
+    <li><a href="https://www.instagram.com/khalidbasalamahofficial/" target="_blank"><img
+                src="assets/img/sosmed/instagram.svg" alt="Instagram" class="img-fluid"></a></li>
+    <li><a href="https://twitter.com/ustadzkhalid" target="_blank"><img src="assets/img/sosmed/twitter.svg"
+                alt="twitter" class="img-fluid"></a></li>
+    <li><a href="https://www.youtube.com/c/khalidbasalamah" target="_blank"><img src="assets/img/sosmed/youtube.svg"
+                alt="Youtube" class="img-fluid"></a></li>
+</ul>
+
+<div id="btnSosmedTrigger" onclick="openShare()"></div>
+
+<div id="btnWhatsApp"
+    onclick="window.open('https://wa.me/081113302121?text=السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ')">
+</div>
+
+<!-- Sosmed fixed -->
+
+{% endblock %}
