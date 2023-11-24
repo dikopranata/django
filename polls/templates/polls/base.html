@@ -20,12 +20,13 @@
             <ul class="menuList">
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
-                
+                <li><a href="{% url 'home' %}">Home</a></li>
             </ul>
         </div>
         <div class="item">
-            <a class="logo" href="{% url 'index' %}"><img src="{{user.profile.image.url}}" alt="Mawaddah Indonesia"
-                    class="img-fluid"></a>
+            <a class="logo" href="{% url 'index' %}">
+                <!--<img src="{{user.profile.image.url}}" alt="Mawaddah Indonesia"
+                    class="img-fluid">--></a>
         </div>
         <div class="item">
             <ul class="menuList">
@@ -50,7 +51,7 @@
 
     <!-- Sosmed fixed -->
 
-    <ul id="sosmedFixed" class="sosmedFixed d-none1">
+    <!--<ul id="sosmedFixed" class="sosmedFixed d-none1">
         <li><a href="https://web.facebook.com/khalidzeedbasalamah?_rdc=1&_rdr" target="_blank"><img
                     src="assets/img/sosmed/facebook.svg" alt="Facebook" class="img-fluid"></a></li>
         <li><a href="https://www.instagram.com/khalidbasalamahofficial/" target="_blank"><img
@@ -59,7 +60,7 @@
                     alt="twitter" class="img-fluid"></a></li>
         <li><a href="https://www.youtube.com/c/khalidbasalamah" target="_blank"><img src="assets/img/sosmed/youtube.svg"
                     alt="Youtube" class="img-fluid"></a></li>
-    </ul>
+    </ul>-->
 
     <div id="btnSosmedTrigger" onclick="openShare()"></div>
 
@@ -72,7 +73,7 @@
     <div class="simpleAksen pt-5">
         <br><br>
         <div class="titleSection mt-5">
-            <img src="assets/img/aboutTitle.svg" class="img-fluid" alt=""  data-aos="fade-up">
+            <img src="" class="img-fluid" alt=""  data-aos="fade-up">
         </div>
 
         <div class="container text-center" data-aos="fade-up" data-aos-delay="100">

@@ -2,8 +2,9 @@
 
 {% block content %}
     <div>
-        
-            <h5 class="text-white"> {{ room.name   }} </h5>
+        <span> @{{ post.author.username }} </span>
+        <h5 class="text-white"> {{ post.title   }} </h5>
+        <small>{{ post.topic.name}}</small>
     </div>
     <div>
             <p> <a href="{% url 'home' %}">back</a> </p>
