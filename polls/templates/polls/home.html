@@ -7,16 +7,22 @@
         grid-template-columns: 1fr 3fr;
     }
 </style>
+
 <div class='home-container'>
     <div>
-        <h3>Topic</h3>
+        Welcome,{{ request.user }}
+        <h3>Topics </h3>
         <a href="{% url 'home' %}">All</a>
         {% for topic in topics %}
             <div>
                 <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
             </div>
         {% endfor %}
+        <form method="GET" action="{% url 'home' %}">
+            <input type="text" name="q" placeholder="Search..">
+        </form>
         <hr>
+        <h3> Rooms </h3>
         {% for room in rooms %}
             <p class='text-white'>{{room.id}} -- <a href="{% url 'room' room.id %}"> {{ room.name  }}</a>
             <p><a href="/room/{{room.id}}">klik here</a> </p>
@@ -25,13 +31,15 @@
     </div>
     
     <div>
-        <h2>Posts</h2>
+        <h2>Posts</h2><h4>{{post_count}} - post available</h4>
         <hr>
         <a href='{% url "create-post" %}'>Create Post</a>
         {% for post in posts %}
         <div>
+            {% if request.user == post.author %}
             <a href="{% url 'update-post' post.id %}"> Edit </a>
             <a href="{% url 'delete-post' post.id %}"> Delete </a>
+            {% endif %}
             <span>@{{ post.author.username }} </span>
             <p class="text-white"> 
                 {{ post.id }}. <a href="{% url 'post' post.id %}">){{ post.title }} : </a> {{ post.content }} </p>

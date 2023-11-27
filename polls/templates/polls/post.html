@@ -1,10 +1,15 @@
 {% extends "polls/base.html" %}
 
 {% block content %}
-    <div>
-        <span> @{{ post.author.username }} </span>
-        <h5 class="text-white"> {{ post.title   }} </h5>
+<h1> @{{ post.author.username }} </h1>
+<p> {{ post.content }} </p>
+    <div class='comment-wrapper'>
+        <h5 class="text-white"> {{ post.title }} </h5>
         <small>{{ post.topic.name}}</small>
+        <hr>
+        {% for comment in comments %}
+            <small>@{{ comment.user }} {{comment.body}}</small>
+        {% endfor %}
     </div>
     <div>
             <p> <a href="{% url 'home' %}">back</a> </p>
