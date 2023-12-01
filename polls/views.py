@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Post,Topic
+from .models import Post,Topic,Comment
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -39,7 +39,8 @@ def home(request):
         )
     post_count = posts.count()
     topics = Topic.objects.all()
-    context = {'rooms': rooms, 'posts' : posts, 'topics':topics,'post_count':post_count }
+    comments = Comment.objects.all()
+    context = {'rooms': rooms, 'posts' : posts, 'topics':topics,'post_count':post_count,'comments':comments }
     return render(request,'polls/home.html',context)
 
 def room(request, pk):
@@ -54,7 +55,15 @@ def room(request, pk):
 
 def post(request,pk):
     post = Post.objects.get(id=pk)
-    comments = post.comment_set.all()
+    comments = post.comment_set.all().order_by('-created')
+
+    if request.method == 'POST':
+        comment = Comment.objects.create(
+            user = request.user,
+            post = post,
+            body = request.POST.get('body')
+        )
+        return redirect('post',pk=post.id)
     context = {'post':post,'comments':comments}
     return render(request,'polls/post.html',context)
 

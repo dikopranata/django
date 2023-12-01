@@ -1,0 +1,8 @@
+<h3>Recent Activity</h3>
+{% for comment in comments  %}
+<div>
+    <small> {{ comment.user }} {{ comment.created|timesince }} </small>
+    <small> replied to "{{ comment.post }}" </small>
+    <p>{{comment}}</p>
+</div>
+{% endfor %}
